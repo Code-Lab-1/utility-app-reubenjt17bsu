@@ -1,0 +1,209 @@
+menu = [
+    { 
+    'itemname' : 'Vanilla',
+    'itemno' : 1,
+    'price' : 8.50,
+    'qty' : 5,
+     },
+
+         { 
+    'itemname' : 'Chocolate',
+    'itemno' : 2,
+    'price' : 8.50,
+    'qty' : 5,
+     },
+
+         { 
+    'itemname' : 'Strawberry',
+    'itemno' : 3,
+    'price' : 9,
+    'qty' : 5,
+     },
+     
+              { 
+    'itemname' : 'Mango',
+    'itemno' : 4,
+    'price' : 7.50,
+    'qty' : 3,
+     },
+     
+              { 
+    'itemname' : 'Cotton Candy',
+    'itemno' : 5,
+    'price' : 7.50,
+    'qty' : 2,
+     },
+     
+         { 
+    'itemname' : 'Watermelon',
+    'itemno' : 6,
+    'price' : 6.50,
+    'qty' : 4,
+     },
+
+         { 
+    'itemname' : 'Mint Chocolate-Chip',
+    'itemno' : 7,
+    'price' : 4.50,
+    'qty' : 2,
+     },
+
+         { 
+    'itemname' : 'Double Chocolate Fudge',
+    'itemno' : 8,
+    'price' : 9,
+    'qty' : 7,
+     },
+     
+              { 
+    'itemname' : 'Strawberry Devine',
+    'itemno' : 9,
+    'price' : 8,
+    'qty' : 1,
+     },
+     
+              { 
+    'itemname' : 'Gold-Medal Ribbon',
+    'itemno' : 10,
+    'price' : 8,
+    'qty' : 9,
+     },
+         { 
+    'itemname' : 'Jamoca Almond Fudge',
+    'itemno' : 11,
+    'price' : 8,
+    'qty' : 10,
+     },
+
+         { 
+    'itemname' : 'Praline and Cream',
+    'itemno' : 12,
+    'price' : 7.50,
+    'qty' : 6,
+     },
+
+         { 
+    'itemname' : 'Cookies and Cream',
+    'itemno' : 13,
+    'price' : 9,
+    'qty' : 12,
+     },
+     
+              { 
+    'itemname' : 'KitKat Sprinkle',
+    'itemno' : 14,
+    'price' : 9.50,
+    'qty' : 1,
+     },
+     
+              { 
+    'itemname' : 'Orea Dream',
+    'itemno' : 15,
+    'price' : 13,
+    'qty' : 6,
+     },
+
+         { 
+    'itemname' : 'Mars Overload',
+    'itemno' : 16,
+    'price' : 11,
+    'qty' : 8,
+     },
+
+         { 
+    'itemname' : 'Twix Mix',
+    'itemno' : 17,
+    'price' : 10,
+    'qty' : 2,
+     },
+
+         { 
+    'itemname' : 'Bounty Hunter Twirl',
+    'itemno' : 18,
+    'price' : 9.75,
+    'qty' : 3,
+     },
+     
+              { 
+    'itemname' : 'Whipped Cream Can',
+    'itemno' : 19,
+    'price' : 3,
+    'qty' : 1,
+     },
+     
+              { 
+    'itemname' : 'Coffeelicious',
+    'itemno' : 20,
+    'price' : 8,
+    'qty' : 5.50,
+     },
+]
+def list():
+    print("-   Welcome to Baskin Robins   -")
+    print("--------------------------------")
+    print("1- Vanilla                8.5AED")
+    print("2- Chocolate              8.5AED")
+    print("3- Strawberry               9AED")
+    print("4- Mango                  7.5AED")
+    print("5- Cotton Candy           7.5AED")
+    print("6- Watermelon             6.5AED")
+    print("7- Mint Chocolate-chip    4.5AED")
+    print("8- Double Chocolate Fudge   9AED")
+    print("9- Strawberry Devine        8AED")
+    print("10- Gold-Medal Ribbon       8AED")
+    print("11- Jamoca Almond Fudge     8AED")
+    print("12- Praline and Cream     7.5AED")
+    print("13- Cookies and cream       9AED")
+    print("14- KitKat sprinkle       9.5AED")
+    print("15- Oreo Dream             13AED")
+    print("16- Mars Overload          11AED")
+    print("17- Twix Mix               10AED")
+    print("18- Bounty Hunter Twirl  9.75AED")
+    print("19- Whipped Cream Can       3AED")
+    print("20- Coffeelicious           8AED")
+
+def order():
+    a=True
+    while a==True:
+        list()
+        size_ice=int(input("Size select. 1-Small, 2-Medium(+5AED), 3-Large(+8AED)"))
+        input_money=int(input("Enter amount of money to deposit-"))
+        if input_money<=0:
+            print("\nPlease enter a minimum of 1dhs to make any form of transaction-")
+            order()
+        input_id=int(input("Enter the code of the ice cream-"))
+        if input_id<=0 or input_id>=21:
+            print("\nPlease enter a code thats shown on screen-")
+            order()
+        amount=0
+        balance=0
+        size=0
+        if size_ice==1:
+            size=0
+        elif size_ice==2:
+            size=5
+        elif size_ice==3:
+            size=8
+        else:
+            print("\nEnter number 1-3 please.")
+            order()
+        for i in menu:
+            if input_id==i['itemno'] and i['qty']==0:
+                print("\nNo available stock, sorry!")
+                order()
+            if input_id==i['itemno'] and i['price']+size>input_money:
+                print("\nNot enough money to purchase this item")
+                order()
+            if input_id==i['itemno']:
+                print("\nyou have purchased the flavor",i['itemname'])
+                amount=i['price']+size
+                print(
+                    "-        Reciept       -\n"
+                    "-",i['itemname'],'   ',i['price'],'AED',"\n"
+                    "------                  \n"
+                    "Total-",amount,"AED     \n"
+                    "Balance-",input_money-amount,'AED','\n'
+                    "- Thank you for shopping-\n"
+                    )
+                a=False
+order()
